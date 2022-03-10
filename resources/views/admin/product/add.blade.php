@@ -44,30 +44,26 @@
                 <textarea type="text" name='txtContent' class="form-control" id="txtContent"></textarea>
             </div>
             <div class="form-group">
-                <label for="exampleInputFile">Hình ảnh</label>
-                <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" name='fileImage' class="custom-file-input" id="imgSP">
-                        <label class="custom-file-label" for="imgSP">Tải ảnh lên</label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                    </div>
+                <label for="upload">Ảnh sản phẩm</label>
+                <input type="file" name='upload' class="form-control" id="upload">
+                <div id="image_show">
                 </div>
+                <input type="hidden" name="file" id="file">
             </div>
-            <div class="form-check-inline">
-                <label for="txtContent">Kích hoạt</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="1" name="active" checked="">
-                    <label class="form-check-label">Có</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="0" name="active">
-                    <label class="form-check-label">Không</label>
-                </div>
+        </div>
+        <div class="form-check-inline">
+            <label for="txtContent">Kích hoạt</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="1" name="active" checked="">
+                <label class="form-check-label">Có</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" value="0" name="active">
+                <label class="form-check-label">Không</label>
+            </div>
+        </div>
 
-            @csrf
+        @csrf
         </div>
         <!-- /.card-body -->
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,6 @@ Route::middleware('auth')->group(function () {
         });
 
         // upload
-        Route::post('upload/services', [\App\Http\Service\UploadService::class, 'store']);
+        Route::post('upload/services', [UploadController::class, 'store']);
     });
 });
