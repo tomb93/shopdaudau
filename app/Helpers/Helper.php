@@ -11,7 +11,7 @@ class Helper{
                 $html.='<td>'.$char.$item->name.'</td>';
                 $html.='<td>'.$item->active.'</td>';
                 $html.='<td>'.$item->updated_at.'</td>';
-                $html.='<td><a href="/admin/menu/edit/" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a><a href="#" onclick="removeRow('.$item->id.',\'/admin/menu/destroy\')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td></tr>';
+                $html.='<td><a href="/admin/menu/edit/'.$item->id.'" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a><a href="#" onclick="removeRow('.$item->id.',\'/admin/menu/destroy\')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td></tr>';
                 unset($menus[$key]);
                 $html.=self::menu($menus,$item->id,$char."|--");
             }

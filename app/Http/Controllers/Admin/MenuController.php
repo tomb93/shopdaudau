@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Menu\CreateFormRequest;
+use App\Models\menu;
 use Illuminate\Http\Request;
-use App\Http\Service\Menu\MenuService;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Service\Menu\MenuService;
+use App\Http\Requests\Menu\CreateFormRequest;
 
 class MenuController extends Controller
 {
@@ -46,5 +47,20 @@ class MenuController extends Controller
              ]);
          }
          return response()->json(['error'=>true]);
+     }
+
+     public function show(menu $menu)
+     {
+        return view('admin.menu.edit',[
+            'title'=>"Chỉnh sửa danh mục ".$menu->name,
+            'menu'=>$menu,
+            'menus'=> $this->menuService->getParent()
+        ]);
+     }
+
+     public function update(menu $menu,CreateFormRequest $request)
+     {
+        $this->menuService->update($request,$menu);
+        return redirect('/admin/menu/list');
      }
 }
