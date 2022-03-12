@@ -28,19 +28,18 @@
             <div class="form-group">
                 <label for="sort_by">Sắp Xếp</label>
                 <input type="number" name="sort_by" value="1" class="form-control" id="sort_by">
-            </div>
-            <div class="form-check-inline">
-                <label for="txtContent">Kích hoạt</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="1" name="active" checked="">
-                    <label class="form-check-label">Có</label>
+                <div class="form-check-inline">
+                    <label for="txtContent">Kích hoạt</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="1" name="active" checked="">
+                        <label class="form-check-label">Có</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="0" name="active">
+                        <label class="form-check-label">Không</label>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" value="0" name="active">
-                    <label class="form-check-label">Không</label>
-                </div>
             </div>
-        </div>
         </div>
 
         <!-- /.card-body -->
