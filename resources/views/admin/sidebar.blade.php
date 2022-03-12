@@ -35,7 +35,6 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
-                {{-- menu --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-tasks"></i>
@@ -60,7 +59,6 @@
 
                     </ul>
                 </li>
-                {{-- product --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon	fa fa-shopping-bag"></i>
@@ -85,7 +83,6 @@
 
                     </ul>
                 </li>
-                {{-- slider --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-images"></i>
