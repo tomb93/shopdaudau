@@ -2,87 +2,77 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\ProductRequest;
+use App\http\Requests\Product\ProductService;
+use App\Http\Service\product\ProductAdminService;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected $productService;
+    public function __construct(ProductAdminService $productService)
     {
-        //
+        $this->productService = $productService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function index()
     {
-        return view('admin.product.add', [
-            'title' => 'Thêm mới sản phẩm'
-
+        return view('admin.product.list', [
+            'title' => 'Danh sách sản phẩm',
+            'products' => $this->productService->get()
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function create()
     {
-        //
+        return view('admin.product.add', [
+            'title' => 'Thêm mới sản phẩm',
+            'menus' => $this->productService->getMenu()
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function store(ProductRequest $request)
     {
-        //
+        $this->productService->insert($request);
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function show(Product $product)
     {
-        //
+        return  view('admin.product.edit', [
+            'title' => 'Chỉnh sửa sản phẩm ' . $product->name,
+            'product' => $product,
+            'menus' => $this->productService->getMenu()
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+
+
+    public function update(Request $request, Product $product)
     {
-        //
+        $result = $this->productService->update($product, $request);
+        if ($result) {
+            return redirect('/admin/products/list');
+        }
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(Request $request)
     {
-        //
+        $result = $this->productService->delete($request);
+        if ($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công'
+            ]);
+        }
+        return response()->json(['error' => true]);
     }
 }

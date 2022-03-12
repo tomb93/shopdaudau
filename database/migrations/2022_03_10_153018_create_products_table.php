@@ -19,11 +19,11 @@ class CreateProductsTable extends Migration
             $table->text('decription');
             $table->longText('content');
             $table->integer('menu_id');
-            $table->integer('price');
-            $table->integer('price_sale');
+            $table->integer('price')->nullable();
+            $table->integer('price_sale')->nullable();
             $table->integer('active');
-            $table->string('slug')->unique();
-            $table->string('image');
+            $table->string('slug')->nullable();
+            $table->string('thumb');
             $table->timestamps();
         });
     }

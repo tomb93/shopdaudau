@@ -38,7 +38,7 @@
                 {{-- menu --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fa fa-tasks"></i>
                         <p>
                             Menu
                             <i class="right fas fa-angle-left"></i>
@@ -63,7 +63,7 @@
                 {{-- product --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon	fa fa-shopping-bag"></i>
                         <p>
                             Sản Phẩm
                             <i class="right fas fa-angle-left"></i>
@@ -80,6 +80,31 @@
                             <a href="/admin/products/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách SP</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                {{-- slider --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-images"></i>
+                        <p>
+                            Sliders
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/sliders/add" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm Slider</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/sliders/list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách Slider</p>
                             </a>
                         </li>
 
