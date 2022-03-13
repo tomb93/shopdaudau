@@ -6,6 +6,7 @@ use App\Models\menu;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProductAdminService
 {
@@ -86,6 +87,8 @@ class ProductAdminService
     {
         $product = Product::where('id', $request->input('id'))->first();
         if ($product) {
+            $path = str_replace('storage', 'public', $product->thumb);
+            Storage::delete($path);
             $product->delete();
             return true;
         } else return false;

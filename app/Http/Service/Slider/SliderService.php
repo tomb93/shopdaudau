@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 
 class SliderService
 {
+    public function showSlider($active)
+    {
+        return Slider::select('name', 'url', 'thumb', 'description')->where('active', $active)->orderbyDesc('sort_by')->get();
+    }
     public function insert($request)
     {
         try {

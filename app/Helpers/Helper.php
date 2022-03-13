@@ -24,8 +24,12 @@ class Helper
 
     public static function active($active = 0)
     {
-        return $active == 0 ? '<span class="btn btn-danger btn-xs">No</span>'
-            : '<span class="btn btn-success btn-xs">YES</span>';
+        $result = '<span class="btn btn-danger btn-xs">Ẩn</span>';
+        if ($active == 1)
+            $result = '<span class="btn btn-success btn-xs">Slider</span>';
+        if ($active == 2)
+            $result = '<span class="btn btn-warning btn-xs">Baner</span>';
+        return $result;
     }
     public static function product($products)
     {
