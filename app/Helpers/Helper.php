@@ -63,4 +63,33 @@ class Helper
         }
         return $html;
     }
+
+    public static function loadMenuMain($data, $parent_id = 0)
+    {
+        $html = '';
+        foreach ($data as $key => $item) {
+            if ($item->parent_id == $parent_id) {
+                $html .= '
+                <li>
+                    <a href="/' . $item->slug . '">' . $item->name . '</a>
+                ';
+                if (self::isChild($data, $item->id)) {
+                    $html .= '<ul class="sub-menu">';
+                    $html .= self::loadMenuMain($data, $item->id);
+                    $html .= '</ul>';
+                }
+                $html .= '</li>';
+            }
+        }
+        return $html;
+    }
+    public static function isChild($menu, $id)
+    {
+        foreach ($menu as $item) {
+            if ($item->parent_id == $id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
