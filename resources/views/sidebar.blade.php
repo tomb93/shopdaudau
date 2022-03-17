@@ -12,31 +12,25 @@
             <ul class="sidebar-link w-full">
                 <li class="p-b-13">
                     <a href="index.html" class="stext-102 cl2 hov-cl1 trans-04">
-                        Home
+                        Trang chủ
                     </a>
                 </li>
 
                 <li class="p-b-13">
                     <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                        My Wishlist
+                        Yêu thích
                     </a>
                 </li>
 
                 <li class="p-b-13">
                     <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                        My Account
+                        Tài khoản
                     </a>
                 </li>
 
                 <li class="p-b-13">
                     <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
                         Track Oder
-                    </a>
-                </li>
-
-                <li class="p-b-13">
-                    <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                        Refunds
                     </a>
                 </li>
 
@@ -49,7 +43,7 @@
 
             <div class="sidebar-gallery w-full p-tb-30">
                 <span class="mtext-101 cl5">
-                    @ CozaStore
+                    @ Shopdaudau
                 </span>
 
                 <div class="flex-w flex-sb p-t-36 gallery-lb">

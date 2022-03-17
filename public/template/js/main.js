@@ -1,7 +1,11 @@
 
 (function ($) {
     "use strict";
-
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     /*[ Load page ]
     ===========================================================*/
     $(".animsition").animsition({
@@ -23,7 +27,7 @@
         overlayParentElement : 'html',
         transition: function(url){ window.location.href = url; }
     });
-    
+
     /*[ Back to top ]
     ===========================================================*/
     var windowH = $(window).height()/2;
@@ -52,26 +56,26 @@
     else {
         var posWrapHeader = 0;
     }
-    
+
 
     if($(window).scrollTop() > posWrapHeader) {
         $(headerDesktop).addClass('fix-menu-desktop');
-        $(wrapMenu).css('top',0); 
-    }  
+        $(wrapMenu).css('top',0);
+    }
     else {
         $(headerDesktop).removeClass('fix-menu-desktop');
-        $(wrapMenu).css('top',posWrapHeader - $(this).scrollTop()); 
+        $(wrapMenu).css('top',posWrapHeader - $(this).scrollTop());
     }
 
     $(window).on('scroll',function(){
         if($(this).scrollTop() > posWrapHeader) {
             $(headerDesktop).addClass('fix-menu-desktop');
-            $(wrapMenu).css('top',0); 
-        }  
+            $(wrapMenu).css('top',0);
+        }
         else {
             $(headerDesktop).removeClass('fix-menu-desktop');
-            $(wrapMenu).css('top',posWrapHeader - $(this).scrollTop()); 
-        } 
+            $(wrapMenu).css('top',posWrapHeader - $(this).scrollTop());
+        }
     });
 
 
@@ -104,7 +108,7 @@
                     $(arrowMainMenu).removeClass('turn-arrow-main-menu-m');
                 }
             });
-                
+
         }
     });
 
@@ -137,7 +141,7 @@
             var filterValue = $(this).attr('data-filter');
             $topeContainer.isotope({filter: filterValue});
         });
-        
+
     });
 
     // init Isotope
@@ -176,7 +180,7 @@
         if($('.js-show-search').hasClass('show-search')) {
             $('.js-show-search').removeClass('show-search');
             $('.panel-search').slideUp(400);
-        }    
+        }
     });
 
     $('.js-show-search').on('click',function(){
@@ -186,7 +190,7 @@
         if($('.js-show-filter').hasClass('show-filter')) {
             $('.js-show-filter').removeClass('show-filter');
             $('.panel-filter').slideUp(400);
-        }    
+        }
     });
 
 
@@ -265,18 +269,44 @@
             }
         });
     });
-    
+
     /*==================================================================
     [ Show modal1 ]*/
-    $('.js-show-modal1').on('click',function(e){
+    showModal1();
+    function showModal1() {
+        $('.js-show-modal1').on('click',function(e){
+            e.preventDefault();
+            $('.js-modal1').addClass('show-modal1');
+        });
+
+        $('.js-hide-modal1').on('click',function(){
+            $('.js-modal1').removeClass('show-modal1');
+        });
+    }
+
+  /*==================================================================
+    [ load more ]*/
+    $('#loadMore').on('click',function(e){
         e.preventDefault();
-        $('.js-modal1').addClass('show-modal1');
-    });
-
-    $('.js-hide-modal1').on('click',function(){
-        $('.js-modal1').removeClass('show-modal1');
-    });
-
-
-
+        // alert('Loading more');
+        const productPage = $('#productPage').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'JSON',
+            data:{ productPage },
+            url: '/services/load-product',
+            success: function(result){
+                if(result.html!='') {
+                    $('#loadProduct').append(result.html);
+                    $('#productPage').val(productPage+1);
+                    showModal1();
+                }
+                else{
+                    $('#btn-loadmore').hide();
+                    alert('Đã load xong sản phẩm');
+                }
+            }
+        });
+    })
 })(jQuery);
+

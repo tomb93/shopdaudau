@@ -68,19 +68,28 @@ class Helper
         return $html;
     }
 
-    public static function loadMenuMain($data, $parent_id = 0)
+    public static function loadMenuMain($data, $parent_id = 0, $mobile = 0)
     {
         $html = '';
         foreach ($data as $key => $item) {
             if ($item->parent_id == $parent_id) {
                 $html .= '
                 <li>
-                    <a href="/' . $item->slug . '">' . $item->name . '</a>
+                    <a href="/danh-muc/' . $item->id . '-' . $item->slug . '">' . $item->name . '</a>
                 ';
                 if (self::isChild($data, $item->id)) {
-                    $html .= '<ul class="sub-menu">';
-                    $html .= self::loadMenuMain($data, $item->id);
-                    $html .= '</ul>';
+                    if ($mobile == 1) {
+                        $html .= '<ul class="sub-menu-m">';
+                        $html .= self::loadMenuMain($data, $item->id);
+                        $html .= '</ul>';
+                        $html .= '<span class="arrow-main-menu-m">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </span>';
+                    } else {
+                        $html .= '<ul class="sub-menu">';
+                        $html .= self::loadMenuMain($data, $item->id);
+                        $html .= '</ul>';
+                    }
                 }
                 $html .= '</li>';
             }
@@ -95,5 +104,13 @@ class Helper
             }
         }
         return false;
+    }
+
+    // giá gốc và giá giảm
+    public static function price($price = 0, $price_sale = 0)
+    {
+        if ($price_sale != 0) return $price_sale;
+        if ($price != 0) return $price;
+        return '<a href="/lien-he">Liên Hệ</a>';
     }
 }

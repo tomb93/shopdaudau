@@ -1,4 +1,4 @@
-@isset($menuBanners)
+@isset($sliders)
     <section class="section-slide">
         <div class="wrap-slick1 rs2-slick1">
             <div class="slick1">

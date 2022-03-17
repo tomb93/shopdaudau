@@ -59,4 +59,17 @@ class MenuService
         Session::flash('success', 'Cập nhật danh mục thành công');
         return true;
     }
+    public function getID($id)
+    {
+        $menu = menu::where('id', $id)->where('active', 1)->firstOrFail();
+        return $menu;
+    }
+    public function getProducts($menu)
+    {
+        return $menu->products()
+            ->select('id', 'name', 'price', 'price_sale', 'thumb', 'slug')
+            ->where('active', 1)
+            ->orderbyDesc('id')
+            ->paginate(12);
+    }
 }
