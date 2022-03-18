@@ -67,3 +67,4 @@ Route::post('/update-cart', [CartController::class, 'update']);
 Route::get('/gio-hang', [CartController::class, 'show']);
 Route::get('/delete/{id}', [CartController::class, 'removeProduct']);
 Route::get('/gio-hang/delete/{id}', [CartController::class, 'removeProductCart']);
+Route::post('/gio-hang', [CartController::class, 'order']);

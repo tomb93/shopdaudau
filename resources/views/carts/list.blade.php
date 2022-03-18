@@ -81,7 +81,7 @@
                             <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                                 <div class="flex-w flex-m m-r-20 m-tb-5">
                                     <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
-                                        name="coupon" placeholder="Coupon Code">
+                                        name="coupon" placeholder="Coupon Code" value="{{ old('coupon') }}">
 
                                     <div
                                         class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
@@ -93,6 +93,37 @@
                                     class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10"
                                     value="Update Cart">
                                 @csrf
+                            </div>
+                            <div class="bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                                <div class="m-r-20 m-tb-5">
+                                    <div class="flex-c-m size-118 p-lr-15 trans-04 m-tb-5">
+                                        <h4 class="mtext-109 cl2 p-b-30">
+                                            NGƯỜI NHẬN
+                                        </h4>
+                                    </div>
+                                    <div class="bor8 bg0 m-b-12">
+                                        <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="txtName"
+                                            placeholder="Họ tên" value="{{ old('txtName') }}" required>
+                                    </div>
+                                </div>
+                                <div class="m-r-20 m-tb-5">
+                                    <div class="bor8 bg0 m-b-12">
+                                        <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="txtPhone"
+                                            placeholder="SDT" value="{{ old('txtPhone') }}" required>
+                                    </div>
+                                </div>
+                                <div class="m-r-20 m-tb-5">
+                                    <div class="bor8 bg0 m-b-12">
+                                        <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="txtEmail"
+                                            placeholder="Email" value="{{ old('txtEmail') }}" required>
+                                    </div>
+                                </div>
+                                <div class="m-r-20 m-tb-5">
+                                    <div class="bor8 bg0 m-b-12">
+                                        <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="txtContent"
+                                            placeholder="ghi chú" value="{{ old('txtContent"') }}" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,19 +147,6 @@
                                     </span>
                                 </div>
                             </div>
-                            {{-- shipping --}}
-                            <div class="flex-w flex-t bor12 p-t-15 p-b-30">
-                                <div class="size-208 w-full-ssm">
-                                    <span class="stext-110 cl2">
-                                        Vận chuyển:
-                                    </span>
-                                </div>
-                                <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-                                    <span class="mtext-110 cl2">
-                                        0
-                                    </span>
-                                </div>
-                            </div>
                             {{-- coupon --}}
                             <div class="flex-w flex-t bor12 p-t-15 p-b-30">
                                 <div class="size-208 w-full-ssm">
@@ -143,6 +161,57 @@
                                     </span>
                                 </div>
                             </div>
+                            {{-- shipping --}}
+                            <div class="flex-w flex-t bor12 p-t-15 p-b-30">
+                                <div class="size-208 w-full-ssm">
+                                    <span class="stext-110 cl2">
+                                        Vận chuyển:
+                                    </span>
+                                </div>
+                                <div class="size-100 p-r-18 p-r-0-sm w-full-ssm">
+                                    <p class="stext-111 cl6 p-t-2">
+                                        (--Nhập địa chỉ để tính phí ship--)
+                                    </p>
+
+                                    <div class="p-t-15">
+                                        <span class="stext-112 cl8">
+                                            Địa chỉ giao hàng
+                                        </span>
+
+                                        <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+                                            <select class="js-select2" name="txtCity">
+                                                <option disabled="disabled" selected="true">Tỉnh/Thành phố...</option>
+                                                <option>Hồ Chí Minh</option>
+                                                <option>Hà Nội</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+
+                                        <div class="bor8 bg0 m-b-12">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text"
+                                                name="txtDistrict" placeholder="Quận/Huyện"
+                                                value="{{ old('txtDistrict') }}" required>
+                                        </div>
+
+                                        <div class="bor8 bg0 m-b-22">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="txtWard"
+                                                placeholder="Phường/Xã" value="{{ old('txtWard') }}" required>
+                                        </div>
+                                        <div class="bor8 bg0 m-b-22">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="txtStreet"
+                                                placeholder="Số nhà + Đường" value="{{ old('txtStreet') }}" required>
+                                        </div>
+                                        <div class="flex-w">
+                                            <div
+                                                class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
+                                                Upload Address
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="flex-w flex-t p-t-27 p-b-33">
                                 <div class="size-208">
                                     <span class="mtext-101 cl2">
@@ -158,7 +227,7 @@
                             </div>
 
                             <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                                THANH TOÁN
+                                ĐẶT HÀNG
                             </button>
                         </div>
                     </div>

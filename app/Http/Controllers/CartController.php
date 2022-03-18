@@ -46,4 +46,9 @@ class CartController extends Controller
         $this->cartService->remove($id);
         return redirect()->back();
     }
+    public function order(Request $request)
+    {
+        $this->cartService->CustomerOrder($request);
+        return redirect()->back();
+    }
 }
