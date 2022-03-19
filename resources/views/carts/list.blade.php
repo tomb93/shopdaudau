@@ -55,7 +55,8 @@
                                                     href="/san-pham/{{ $item->id . '-' . $item->slug }}">{{ $item->name }}</a>
                                             </td>
                                             <td class="column-3">
-                                                {{ $item->price_sale != 0 ? $item->price_sale : $item->price }}</td>
+                                                {{ number_format($item->price_sale != 0 ? $item->price_sale : $item->price, '0', ',', '.') }}
+                                            </td>
                                             <td class="column-4">
                                                 <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -71,7 +72,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="column-5">{{ $price_end }}</td>
+                                            <td class="column-5">{{ number_format($price_end, '0', ',', '.') }}</td>
                                         </tr>
                                     @endforeach
 
@@ -221,7 +222,7 @@
 
                                 <div class="size-209 p-t-1">
                                     <span class="mtext-110 cl2">
-                                        {{ $total }}
+                                        {!! \App\Helpers\helper::FormatVND($total) !!}
                                     </span>
                                 </div>
                             </div>

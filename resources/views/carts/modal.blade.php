@@ -46,7 +46,7 @@
 
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Total: {{ $sumPrice }}
+                    Total: {!! \App\Helpers\helper::FormatVND($sumPrice) !!}
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">

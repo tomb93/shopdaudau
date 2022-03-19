@@ -22,13 +22,10 @@ class Helper
         return $html;
     }
 
-    public static function active($active = 0)
+    public static function active($active = 0, $arr = ['Ẩn', 'Hiện'])
     {
-        $result = '<span class="btn btn-danger btn-xs">Ẩn</span>';
-        if ($active == 1)
-            $result = '<span class="btn btn-success btn-xs">Slider</span>';
-        if ($active == 2)
-            $result = '<span class="btn btn-warning btn-xs">Baner</span>';
+        $color = ['danger', 'success', 'warning', 'primary', 'secondary', 'info', 'dark'];
+        $result = '<span class="btn btn-' . $color[$active] . ' btn-xs">' . $arr[$active] . '</span>';
         return $result;
     }
     public static function product($products)
@@ -39,8 +36,8 @@ class Helper
             $html .= '<td>' . $item->id . '</td>';
             $html .= '<td>' . $item->name . '</td>';
             $html .= '<td>' . $item->menu->name . '</td>';
-            $html .= '<td>' . $item->price . '</td>';
-            $html .= '<td>' . $item->price_sale . '</td>';
+            $html .= '<td>' . self::FormatVND($item->price) . '</td>';
+            $html .= '<td>' . self::FormatVND($item->price_sale) . '</td>';
             $html .= '<td>' . self::active($item->active) . '</td>';
             $html .= '<td>' . $item->updated_at . '</td>';
             $html .= '<td><a href="/admin/products/edit/' . $item->id . '" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
@@ -60,13 +57,32 @@ class Helper
                     <img src="' . $item->thumb . '" height="40">
                     </a></td>';
             $html .= '<td>' . $item->url . '</td>';
-            $html .= '<td>' . self::active($item->active) . '</td>';
+            $html .= '<td>' . self::active($item->active, ['Ẩn', 'Slider', 'Banner']) . '</td>';
             $html .= '<td>' . $item->updated_at . '</td>';
             $html .= '<td><a href="/admin/sliders/edit/' . $item->id . '" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
             <a href="#" onclick="removeRow(' . $item->id . ',\'/admin/sliders/destroy\')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td></tr>';
         }
         return $html;
     }
+
+    public static function orders($orders)
+    {
+        $html = '';
+        foreach ($orders as $key => $item) {
+            $html .= '<tr>';
+            $html .= '<td>' . $item->id . '</td>';
+            $html .= '<td>' . $item->name . '</td>';
+            $html .= '<td>' . $item->phone . '</td>';
+            $html .= '<td>' . $item->email . '</td>';
+            $html .= '<td>' . $item->updated_at . '</td>';
+            $html .= '<td>' . self::active($item->action) . '</td>';
+            $html .= '<td><a href="/admin/cart/order-detail/' . $item->id . '" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+            <a href="#" onclick="removeRow(' . $item->id . ',\'/admin/cart/order-destroy\')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td></tr>';
+        }
+        return $html;
+    }
+
+
 
     public static function loadMenuMain($data, $parent_id = 0, $mobile = 0)
     {
@@ -109,8 +125,13 @@ class Helper
     // giá gốc và giá giảm
     public static function price($price = 0, $price_sale = 0)
     {
-        if ($price_sale != 0) return $price_sale;
-        if ($price != 0) return $price;
+        if ($price_sale != 0) return self::FormatVND($price_sale);
+        if ($price != 0) return self::FormatVND($price);
         return '<a href="/lien-he">Liên Hệ</a>';
+    }
+
+    public function FormatVND(int $price): string
+    {
+        return sprintf('<strong>%s %s</strong>', number_format($price, 0, ',', '.'), 'VND');
     }
 }

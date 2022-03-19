@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Cart;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends Model
 {
@@ -17,4 +18,8 @@ class Customer extends Model
         'action',
         'acc_CustomerID'
     ];
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'customer_id', 'id');
+    }
 }

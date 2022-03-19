@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\ProductDetailController;
+use App\Http\Controllers\Admin\CartAdminController;
 use App\Http\Controllers\Admin\MainAdminController;
 use App\Http\Controllers\Admin\Users\LoginController;
 
@@ -52,6 +53,21 @@ Route::middleware('auth')->group(function () {
             Route::get('edit/{slider}', [SliderController::class, 'show']);
             Route::post('edit/{slider}', [SliderController::class, 'update']);
             Route::DELETE('destroy', [SliderController::class, 'destroy']);
+        });
+
+        //cart
+        Route::prefix('cart')->group(function () {
+            Route::get('order-list', [CartAdminController::class, 'index']);
+            Route::get('order-detail/{customer}', [CartAdminController::class, 'showOrderDetail']);
+        });
+        //slider
+        Route::prefix('blogs')->group(function () {
+            // Route::get('add', [SliderController::class, 'create']);
+            // Route::post('add', [SliderController::class, 'store']);
+            // Route::get('list', [SliderController::class, 'index']);
+            // Route::get('edit/{slider}', [SliderController::class, 'show']);
+            // Route::post('edit/{slider}', [SliderController::class, 'update']);
+            // Route::DELETE('destroy', [SliderController::class, 'destroy']);
         });
         // upload
         Route::post('upload/services', [UploadController::class, 'store']);

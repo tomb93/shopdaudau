@@ -120,4 +120,16 @@ class CartService
         }
         return Cart::insert($data);
     }
+
+    // admin CArt
+    public function getOrderList()
+    {
+        return Customer::orderbyDesc('id')->paginate(15);
+    }
+    public function getProductForCart($customer)
+    {
+        return $customer->carts()->with(['product' => function ($query) {
+            $query->select('id', 'name', 'thumb', 'slug');
+        }])->get();
+    }
 }

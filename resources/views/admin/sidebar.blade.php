@@ -35,6 +35,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
+
+                {{-- menu --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-tasks"></i>
@@ -59,6 +61,8 @@
 
                     </ul>
                 </li>
+
+                {{-- San pham --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon	fa fa-shopping-bag"></i>
@@ -83,6 +87,8 @@
 
                     </ul>
                 </li>
+
+                {{-- slider --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-images"></i>
@@ -102,6 +108,58 @@
                             <a href="/admin/sliders/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách Slider</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                {{-- CArt --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-cart-plus"></i>
+                        <p>
+                            Carts
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/cart/order-list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Đơn hàng</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="/admin/cart/customer-list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Khách hàng</p>
+                            </a>
+                        </li> --}}
+
+                    </ul>
+                </li>
+
+                {{-- Blog/Tin-Tuc --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Blogs/Tin Tức
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/blogs/menu" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh Mục</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/blogs/post" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Bài Viết</p>
                             </a>
                         </li>
 
